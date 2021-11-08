@@ -16,6 +16,7 @@ public class MODULE {
 			+ "  libjpg-turbo\n"
 			+ "  libpng\n"
 			+ "  giflib\n"
+			+ "  libwebp 1.2.1\n"
 			+ "  zlib\n"
 			+ "  AndroidSVG 1.4 (ASL v2.0)\n"
 			+ "  Automatic coloring algorithm(GPL)\n";
