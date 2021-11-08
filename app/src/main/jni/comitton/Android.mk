@@ -25,6 +25,7 @@ endif
 LOCAL_MODULE    := comitton
 LOCAL_SRC_FILES := callText.cpp TextCommon.cpp callUnrar.cpp callImage.cpp ImageBlur.cpp ImageScaleHalf.cpp \
                                 ImageCommon.cpp ImageThumbnail.cpp ImageJPEG.cpp ImagePDF.cpp ImagePNG.cpp ImageGIF.cpp \
+                                ImageWebp.cpp \
                                 ImageScaleLinear.cpp ImageScaleCubic.cpp ImageScaleNear.cpp ImageScale.cpp ImageBright.cpp \
                                 ImageRotate.cpp ImageMarginCut.cpp ImageSharpen.cpp ImageInvert.cpp ImageGray.cpp ImageColoring.cpp ImageHalf.cpp \
                                 callPdf.cpp PdfFlate.cpp PdfPredict.cpp PdfCommon.cpp PdfArc4.cpp PdfMd5.cpp PdfSha256.cpp PdfAes.cpp PdfCrypt.cpp
@@ -33,12 +34,14 @@ LOCAL_LDLIBS    := -ljnigraphics
 LOCAL_C_INCLUDES += $(LOCAL_PATH)/../zlib
 LOCAL_C_INCLUDES += $(LOCAL_PATH)/../libpng
 LOCAL_C_INCLUDES += $(LOCAL_PATH)/../giflib
+LOCAL_C_INCLUDES += $(LOCAL_PATH)/../libwebp121
 
 LOCAL_STATIC_LIBRARIES += libunrar5
 LOCAL_STATIC_LIBRARIES += libjpeg
 LOCAL_STATIC_LIBRARIES += libpng
 LOCAL_STATIC_LIBRARIES += libzip
 LOCAL_STATIC_LIBRARIES += libgif
+LOCAL_STATIC_LIBRARIES += libwebp
 
 LOCAL_IS_SUPPORT_LOG := true
 ifeq ($(LOCAL_IS_SUPPORT_LOG),true)

@@ -373,6 +373,12 @@ JNIEXPORT jint JNICALL Java_src_comitton_stream_CallImgLibrary_ImageConvert (JNI
 					ret = -4;
 				}
 			}
+			else if (type == 7){
+				ret = LoadImageWebp(&gImageData[gLoadPage], gLoadPage, scale);
+				if (ret == 0 && gLoadError) {
+					ret = -4;
+				}
+			}
 		}
 	}
 	else {

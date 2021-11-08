@@ -760,7 +760,7 @@ public class FileAccess {
 					continue;
 				}
 				String ext = DEF.getFileExt(name);
-				if (ext.equals(".jpg") || ext.equals(".jpeg") || ext.equals(".png") || ext.equals(".gif")/* || ext.equals(".bmp")*/) {
+				if (ext.equals(".jpg") || ext.equals(".jpeg") || ext.equals(".png") || ext.equals(".gif") || ext.equals(".webp")/* || ext.equals(".bmp")*/) {
 					type = FileData.FILETYPE_IMG;
 					if (ext.equals(".jpg") || ext.equals(".jpeg")) {
 						exttype = FileData.EXTTYPE_JPG;
@@ -768,8 +768,11 @@ public class FileAccess {
 					else if (ext.equals(".png")) {
 						exttype = FileData.EXTTYPE_PNG;
 					}
-					else {
+					else if (ext.equals(".gif")) {
 						exttype = FileData.EXTTYPE_GIF;
+					}
+					else if (ext.equals(".webp")) {
+						exttype = FileData.EXTTYPE_WEBP;
 					}
 				}
 				else if (ext.equals(".zip") || ext.equals(".rar") || ext.equals(".cbz") || ext.equals(".cbr") || ext.equals(".pdf") || ext.equals(".epub")) {
