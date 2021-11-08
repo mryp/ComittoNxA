@@ -29,7 +29,7 @@ extern "C"
 
 int LoadImageWebp(IMAGEDATA* pData, int page, int scale)
 {
-    LOGI("LoadImageWebp : Start Webp");
+    //LOGI("LoadImageWebp : Start Webp");
     VP8StatusCode ret_; /* webp関数の戻り値格納 */
     WebPBitstreamFeatures features; /* 入力webpファイルの情報 */
     uint8_t* decodedData; /* 入力webpデコードデータ */
@@ -46,7 +46,7 @@ int LoadImageWebp(IMAGEDATA* pData, int page, int scale)
     /* WebPデータの情報取得 */
     ret_ = WebPGetFeatures((uint8_t*)gLoadBuffer, gLoadFileSize, &features);
     if (ret_ != VP8_STATUS_OK) {
-        LOGE("LoadImageWebp : [error] WebPGetFeatures error\n");
+        //LOGE("LoadImageWebp : [error] WebPGetFeatures error\n");
         return -1;
     }
     int width = features.width;
@@ -58,14 +58,14 @@ int LoadImageWebp(IMAGEDATA* pData, int page, int scale)
     }
 
     /* デコード */
-    LOGI("LoadImageWebp : Decode phase\n");
+    //LOGI("LoadImageWebp : Decode phase\n");
     if (features.has_alpha == 0) {
         decodedData = WebPDecodeRGB((uint8_t*)gLoadBuffer, gLoadFileSize, &width, &height);
     }
     else {
         decodedData = WebPDecodeRGBA((uint8_t*)gLoadBuffer, gLoadFileSize, &width, &height);
     }
-    LOGI("LoadImageWebp : Decode Finished\n");
+    //LOGI("LoadImageWebp : Decode Finished\n");
 
     /* デコードデータ用メモリ確保 */
     //LOGI("LoadImageWebp : Get Memory phase\n");
@@ -86,7 +86,7 @@ int LoadImageWebp(IMAGEDATA* pData, int page, int scale)
     int ret = 0;
     WORD* buffptr = NULL;
 
-    LOGI("LoadImageWebp : Height -> %d", height);
+    //LOGI("LoadImageWebp : Height -> %d", height);
     for (int yy = 0; yy < height; yy++)
     {
         if (gCancel) {
@@ -130,8 +130,8 @@ int LoadImageWebp(IMAGEDATA* pData, int page, int scale)
             gg = decodedData[(yy * width * ch) + (ch * xx) + 1];
             bb = decodedData[(yy * width * ch) + (ch * xx) + 2];
 
-            LOGI("%d", yy);
-            LOGI("RGB : rr=%02x, gg=%02x, bb=%02x \n", (int)decodedData[(yy * width * ch) + (ch * xx)], decodedData[(yy * width * ch) + (ch * xx)], (int)decodedData[(yy * width * ch) + (ch * xx)]);
+            //LOGI("%d", yy);
+            //LOGI("RGB : rr=%02x, gg=%02x, bb=%02x \n", (int)decodedData[(yy * width * ch) + (ch * xx)], decodedData[(yy * width * ch) + (ch * xx)], (int)decodedData[(yy * width * ch) + (ch * xx)]);
 
             // 切り捨ての値を分散
             if (rr < 0xF8) {
