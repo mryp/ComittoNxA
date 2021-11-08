@@ -1,6 +1,10 @@
 # ComittoNxA
-[ComittoNxA](https://docs.google.com/open?id=0Bzx6UxEo3Pg0SXNIQVdRVnVqemM)のフォーク
+[ComittoNxA](https://github.com/ComittoNxA/ComittoNxA)のフォーク。
+
+ソースの再利用は自由です. 利用しているライブラリはそれぞれのライセンスに従ってください.  
+
 主な変更点
+
 ・画像フォーマット[Webp](https://github.com/webmproject/libwebp)に対応（2021/11/08）
 
 
