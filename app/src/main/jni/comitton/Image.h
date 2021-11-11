@@ -136,3 +136,4 @@ int LoadImageGif(IMAGEDATA *, int, int);
 int LoadImageCCITT(IMAGEDATA *, int, int, int, int, int, int, int, int, int, int, int, int, int, WORD*, int, int);
 int LoadImageFlate(IMAGEDATA *, int, int, int, int, int, int, WORD*, int, int);
 int LoadImageWebp(IMAGEDATA *, int, int);
+int LoadImageBmp(IMAGEDATA *, int, int);

@@ -4,7 +4,8 @@ def versionMajor = 1
 def versionMinor = 65
 def versionPatch = 20
 def revision = "A"
-def forkVersion = "B1"
+def versionPatch2 = 1
+def revision2 = "C"
 
 android {
     compileSdkVersion 30
@@ -13,8 +14,8 @@ android {
         applicationId "jp.dip.muracoro.comittona"
         minSdkVersion 9
         targetSdkVersion 9  // 30にしたらページ選択のサムネイルが動かなかった
-        versionCode versionMajor * 10000 + versionMinor * 100 + versionPatch
-        versionName "${versionMajor}.${versionMinor}${revision}${versionPatch}"
+        versionCode versionMajor * 1000000 + versionMinor * 10000 + versionPatch * 100 + versionPatch2
+        versionName "${versionMajor}.${versionMinor}${revision}${versionPatch}${revision2}${versionPatch2}"
         multiDexEnabled true    // メソッド数が65535を超えてもビルド可能にする
         ndk {
             abiFilters "armeabi-v7a", "x86"    // ARM 32bit と x86 32bit でC++をメイクする
@@ -25,7 +26,7 @@ android {
             return
         }
         variant.outputs.all {
-            outputFileName = "${applicationName}_${versionName}${forkVersion}.apk"
+            outputFileName = "${applicationName}_${versionName}.apk"
         }
     }
     lintOptions {
