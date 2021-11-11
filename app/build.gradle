@@ -4,7 +4,7 @@ def versionMajor = 1
 def versionMinor = 65
 def versionPatch = 20
 def revision = "A"
-def versionPatch2 = 1
+def versionPatch2 = 2
 def revision2 = "C"
 
 android {
