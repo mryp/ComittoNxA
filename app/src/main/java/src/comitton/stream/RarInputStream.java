@@ -43,6 +43,183 @@ public class RarInputStream extends InputStream {
 	InputStream	mInputStream;
 	int mPage;
 
+	public RarInputStream(InputStream is, String charset) throws IOException {
+		// TODO: RAR5対応されていない
+		mInputStream = is;
+
+		byte buff[] = new byte[1024 * 8];
+		int retsize;
+		int readsize;
+		int ret;
+		int datasize, orglen;
+		byte rarver;
+		byte method;
+
+		int header = OFFSET_RAR_HSIZE + 2;
+		int hcrc;
+		int htype;
+		int hflags;
+		int hsize;
+		int asize;
+
+		int maxcmplen = 0;
+		int maxorglen = 0;
+
+		int count = 0;
+
+		while (true) {
+			// ヘッダ読込
+			retsize = is.read(buff, 0, header);
+
+			hcrc = getShort(buff, OFFSET_RAR_HCRC);
+			htype = buff[OFFSET_RAR_HTYPE];
+			hflags = getShort(buff, OFFSET_RAR_HFLAGS);
+			hsize = getShort(buff, OFFSET_RAR_HSIZE);
+			asize = 0;
+
+			if (hsize > header) {
+				if (hsize <= buff.length) {
+					retsize = is.read(buff, header, hsize - header);
+					if (retsize < hsize - header) {
+						// ヘッダがおかしい
+						throw new IOException("This RAR File Format is not supported.");
+					}
+				}
+				else {
+					// ヘッダがおかしい
+					throw new IOException("This RAR File is broken.");
+				}
+			}
+
+			boolean skip = false;
+
+			if (htype != RAR_HTYPE_FILE) {
+				if (htype == RAR_HTYPE_MARK) {
+					if (hcrc != 0x6152 || hflags != 0x1a21 || hsize != 0x0007) {
+						// ヘッダがおかしい
+						throw new IOException("This RAR File Format is not supported.");
+					}
+				}
+				else {
+					// RAR_HTYPE_MAIN
+					// 特にチェックなし
+
+				}
+				skip = true;
+			}
+			else {
+				if ((hflags & 0x0100) != 0) {
+					// 巨大ファイルの時は見ない
+					skip = true;
+				}
+			}
+
+			if (skip) {
+				// ヘッダの残りを読込
+				asize = (hflags & 0x8000) == 0 ? 0 : getInt(buff, OFFSET_RAR_ASIZE);
+				if (asize > 0) {
+					if (hsize + asize <= buff.length) {
+						// 追加ヘッダが有りかつバッファに入りきる
+						retsize = is.read(buff, hsize, asize);
+						if (retsize < asize) {
+							// ヘッダがおかしい
+							throw new IOException("This RAR File Format is not supported.");
+						}
+					}
+					else {
+						// ヘッダがおかしい
+						throw new IOException("This RAR File is broken.");
+					}
+				}
+			}
+			else {
+				// ファイル情報取得
+				datasize = getInt(buff, OFFSET_RAR_PKSIZE);
+				orglen = getInt(buff, OFFSET_RAR_UNSIZE);
+				rarver = buff[OFFSET_RAR_UNPVER];
+				method = buff[OFFSET_RAR_METHOD];
+
+				// ファイル名取得
+				int lenFName = getShort(buff, OFFSET_RAR_FNSIZE);
+				int posFName = OFFSET_RAR_FNAME;
+				String name = "";
+
+				if (hsize + asize >= lenFName + posFName) {
+					// ファイル名までのデータがあり
+					try {
+						for (int i = 0; i < lenFName; i++) {
+							if (buff[posFName + i] == 0) {
+								lenFName = i;
+								break;
+							}
+						}
+						name = new String(buff, posFName, lenFName, charset);
+					}
+					catch (Exception e) {
+						name = "";
+					}
+				}
+				int len = name.length();
+				skip = true;
+				if (len >= 5) {
+					String ext = DEF.getFileExt(name);
+					if (ext.equals(".jpg") || ext.equals(".jpeg") || ext.equals(".png") || ext.equals(".gif")) {
+						skip = false;
+					}
+				}
+
+				if (skip) {
+					while (datasize > 0) {
+						readsize = buff.length;
+						if (readsize > datasize) {
+							readsize = datasize;
+						}
+						retsize = is.read(buff, 0, readsize);
+						if (retsize <= 0) {
+							break;
+						}
+						datasize -= retsize;
+					}
+					count ++;
+					if (count > 10) {
+						break;
+					}
+					continue;
+				}
+
+
+				if (maxcmplen < datasize || maxorglen < orglen) {
+					maxcmplen = datasize;
+					maxorglen = orglen;
+					ret = CallJniLibrary.rarAlloc(maxcmplen, maxorglen);
+					if (ret != 0) {
+						throw new IOException("RAR malloc error.");
+					}
+				}
+				ret = CallJniLibrary.rarInit(datasize, orglen, rarver, method == RAR_METHOD_STORING);
+				if (ret != 0) {
+					throw new IOException("Illegal function call.");
+				}
+
+				while (datasize > 0) {
+					readsize = buff.length;
+					if (readsize > datasize) {
+						readsize = datasize;
+					}
+					retsize = is.read(buff, 0, readsize);
+					if (retsize <= 0) {
+						break;
+					}
+					datasize -= retsize;
+					CallJniLibrary.rarWrite(buff, 0, retsize);
+				}
+				// 変換
+				CallJniLibrary.rarDecomp();
+				break;
+			}
+		}
+	}
+
 	// 4バイト数値取得
 	public int getInt(byte b[], int pos) {
 		int val;
