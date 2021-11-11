@@ -218,8 +218,8 @@ public class FileSelectList implements Runnable, Callback, DialogInterface.OnDis
 					}
 					if (hidden == true && DEF.checkHiddenFile(name)) {
 						fileList.remove(i);
+						continue;
 					}
-					//continue;
 				}
 
 				hit = false;
