@@ -1,11 +1,15 @@
 # ComittoNxA
-[ComittoNxA](https://github.com/ComittoNxA/ComittoNxA)のフォーク。
+[ComittoNxA](https://github.com/ComittoNxA/ComittoNxA)のフォーク
 
 ソースの再利用は自由です. 利用しているライブラリはそれぞれのライセンスに従ってください.  
 
 主な変更点
 
 ・画像フォーマット[Webp](https://github.com/webmproject/libwebp)に対応（2021/11/08）
+
+・画像フォーマットBmp(24bit/32bit)に対応（2021/11/11）
+
+TODO（2021/11/11）：PDFとEPUBのテキストデータの読み込み対応（ほぼすべて作り直し） / TIFF対応 / ファイルリスト、検索まわりの不具合の確認 / サードライブラリのアップデート
 
 
 個人で楽しむために作成しています.  
