@@ -8,6 +8,9 @@
 
 ## 変更履歴
 
+### Ver1.65A20B2 (2021/XX/XX)
+  - yuma211-lab/ComittoNxA Ver1.65A20C1 のコードをマージ
+
 ### Ver1.65A20B1 (2021/11/10)
 
   - yuma211-lab/ComittoNxAからフォークしたソースコードをベースにして作成
