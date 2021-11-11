@@ -25,7 +25,7 @@ endif
 LOCAL_MODULE    := comitton
 LOCAL_SRC_FILES := callText.cpp TextCommon.cpp callUnrar.cpp callImage.cpp ImageBlur.cpp ImageScaleHalf.cpp \
                                 ImageCommon.cpp ImageThumbnail.cpp ImageJPEG.cpp ImagePDF.cpp ImagePNG.cpp ImageGIF.cpp \
-                                ImageWebp.cpp \
+                                ImageWebp.cpp ImageBmp.cpp \
                                 ImageScaleLinear.cpp ImageScaleCubic.cpp ImageScaleNear.cpp ImageScale.cpp ImageBright.cpp \
                                 ImageRotate.cpp ImageMarginCut.cpp ImageSharpen.cpp ImageInvert.cpp ImageGray.cpp ImageColoring.cpp ImageHalf.cpp \
                                 callPdf.cpp PdfFlate.cpp PdfPredict.cpp PdfCommon.cpp PdfArc4.cpp PdfMd5.cpp PdfSha256.cpp PdfAes.cpp PdfCrypt.cpp

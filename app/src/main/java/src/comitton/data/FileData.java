@@ -24,6 +24,7 @@ public class FileData {
 	public static final short EXTTYPE_GIF = 6;
 	public static final short EXTTYPE_TXT = 7;
 	public static final short EXTTYPE_WEBP = 8;
+	public static final short EXTTYPE_BMP = 9;
 
 	private String name;
 	private short type;

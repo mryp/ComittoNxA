@@ -120,6 +120,7 @@ public class ImageManager extends InputStream implements Runnable {
 	public static final int IMAGETYPE_FLATE = 5;
 	public static final int IMAGETYPE_GIF = 6;
 	public static final int IMAGETYPE_WEBP = 7;
+	public static final int IMAGETYPE_BMP = 8;
 
 	public static final int HOSTTYPE_LOCAL = 0;
 	public static final int HOSTTYPE_SAMBA = 1;
@@ -453,6 +454,9 @@ public class ImageManager extends InputStream implements Runnable {
 					}
 					else if (ext.equals(".webp")) {
 						fl.type = 7;
+					}
+					else if (ext.equals(".bmp")) {
+						fl.type = 8;
 					}
 					else if ((ext.equals(".txt") || ext.equals(".xhtml") || ext.equals(".html")) && (mOpenMode == OPENMODE_LIST || mOpenMode == OPENMODE_TEXTVIEW)) {
 						fl.type = 3;
@@ -2568,6 +2572,9 @@ public class ImageManager extends InputStream implements Runnable {
 				else if (ext.equals(".webp")) {
 					type = 7;
 				}
+				else if (ext.equals(".bmp")) {
+					type = 8;
+				}
 				else if ((ext.equals(".txt") || ext.equals(".xhtml") || ext.equals(".html")) && (mOpenMode == OPENMODE_LIST || mOpenMode == OPENMODE_TEXTVIEW)) {
 					type = 3;
 				}
@@ -4178,7 +4185,8 @@ public class ImageManager extends InputStream implements Runnable {
 								sendHandler(MSG_LOADING, prog << 24, rate, null);
 							}
 						}
-					} else if (mFileType == FILETYPE_RAR) {
+					}
+					else if (mFileType == FILETYPE_RAR) {
 						// メモリキャッシュ読込時のみRAR展開する
 						// ファイルキャッシュを作成するときはRAR展開不要
 						mRarStream = new RarInputStream(new BufferedInputStream(this, BIS_BUFFSIZE), page, mFileList[page], mHandler);
@@ -4192,7 +4200,8 @@ public class ImageManager extends InputStream implements Runnable {
 							}
 							os.write(buff, 0, readsize);
 						}
-					} else if (mFileType == FILETYPE_PDF) {
+					}
+					else if (mFileType == FILETYPE_PDF) {
 						while (mRunningFlag == true) {
 							if (mCloseFlag) {
 								break;
@@ -4203,7 +4212,8 @@ public class ImageManager extends InputStream implements Runnable {
 							}
 							os.write(buff, 0, readsize);
 						}
-					} else {
+					}
+					else {
 						while (mRunningFlag == true) {
 							if (mCloseFlag) {
 								break;
