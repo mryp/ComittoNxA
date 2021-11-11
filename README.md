@@ -3,7 +3,7 @@
 
 ソースの再利用は自由です. 利用しているライブラリはそれぞれのライセンスに従ってください.
 
-### [Ver1.65A20C1 (2021/11/11)](https://github.com/ComittoNxA/ComittoNxA/releases/tag/1.65A20C1)
+### [Ver1.65A20C1 (2021/11/11)](https://github.com/yuma211-lab/ComittoNxA/releases/tag/1.65A20C1)
 
 - 画像フォーマット[Webp](https://github.com/webmproject/libwebp)およびBmp(24bit/32bit)に対応
 
