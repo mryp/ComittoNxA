@@ -64,7 +64,7 @@ int LoadImageBmp(IMAGEDATA* pData, int page, int scale)
         //参考：http://www.umekkii.jp/data/computer/file_format/bitmap.cgi
         while (true){
             if((width * ch + offsetCount) % 4 == 0) break;
-            LOGI("LoadImageBmp : offsetCount++\n", bits);
+            LOGI("LoadImageBmp : offsetCount++\n");
             offsetCount++;
         }
     }
@@ -121,7 +121,7 @@ int LoadImageBmp(IMAGEDATA* pData, int page, int scale)
         int yd3 = gDitherY_3bit[yy & 0x07];
         int yd2 = gDitherY_2bit[yy & 0x03];
         int rr, gg, bb;
-        LOGI("LoadImageBmp : decode start\n", bits);
+        LOGI("LoadImageBmp : decode start\n");
         int buffsize = (width * ch + offsetCount) * (height - yy - 1);
         ddata = &gLoadBuffer[buffsize -1 + headerSize];
 
