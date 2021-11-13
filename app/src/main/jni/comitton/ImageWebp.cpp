@@ -27,58 +27,49 @@ extern "C"
 #include "../libwebp121/src/webp/decode.h"
 }
 
+//webpの読み込み
+//参考：https://daeudaeu.com/libwebp/
 int LoadImageWebp(IMAGEDATA* pData, int page, int scale)
 {
-    //LOGI("LoadImageWebp : Start Webp");
-    VP8StatusCode ret_; /* webp関数の戻り値格納 */
-    WebPBitstreamFeatures features; /* 入力webpファイルの情報 */
-    uint8_t* decodedData; /* 入力webpデコードデータ */
-    //int width; /* webpデコードデータの幅 */
-    //int height; /* webpデコードデータの高さ */
+    uint8_t* decodedData; //入力デコードデータ
+    int width = 0; //デコードデータの幅
+    int height = 0; //デコードデータの高さ
+    int ch = 3; //RGB
 
     if (gLoadBuffer == NULL) {
         LOGE("LoadImageWebp : [error] gLoadBuffer is null\n");
         return -1;
     }
 
-    //unsigned char* buffer[1];
-
-    /* WebPデータの情報取得 */
-    ret_ = WebPGetFeatures((uint8_t*)gLoadBuffer, gLoadFileSize, &features);
-    if (ret_ != VP8_STATUS_OK) {
-        //LOGE("LoadImageWebp : [error] WebPGetFeatures error\n");
-        return -1;
+    //alphaを確認するかどうか
+    int checkAlpha = false; //alphaはチェックしない
+    if(checkAlpha){
+        VP8StatusCode ret_; //webp関数の戻り値格納
+        WebPBitstreamFeatures features; //入力ファイルの情報
+        //データの情報取得
+        ret_ = WebPGetFeatures((uint8_t*)gLoadBuffer, gLoadFileSize, &features);
+        if (ret_ != VP8_STATUS_OK) {
+            LOGE("LoadImageWebp : [error] WebPGetFeatures error\n");
+            return -1;
+        }
+        width = features.width;
+        height = features.height;
+        if(features.has_alpha != 0){
+            ch = 4; //RGBA
+        }
     }
-    int width = features.width;
-    int height = features.height;
-    int ch = 3;
-    if (features.has_alpha != 0) {
-        LOGI("LoadImageWebp : Load Alpha Webp\n");
-        ch = 4;
-    }
 
-    /* デコード */
-    //LOGI("LoadImageWebp : Decode phase\n");
-    if (features.has_alpha == 0) {
+    //decode
+    if (ch == 3) {
+        //ch=3：RGB
+        //width,heightは自動格納される
         decodedData = WebPDecodeRGB((uint8_t*)gLoadBuffer, gLoadFileSize, &width, &height);
     }
     else {
+        //ch=4：RGBA
+        //width,heightは自動格納される
         decodedData = WebPDecodeRGBA((uint8_t*)gLoadBuffer, gLoadFileSize, &width, &height);
     }
-    //LOGI("LoadImageWebp : Decode Finished\n");
-
-    /* デコードデータ用メモリ確保 */
-    //LOGI("LoadImageWebp : Get Memory phase\n");
-    //int buffsize = width * height * ch;
-    //unsigned char *pSample = (unsigned char*)malloc(buffsize * sizeof(unsigned char));
-    //if (pSample == NULL) {
-        //LOGE("LoadImageWebp : [error] data malloc error\n");
-        //LOGD("LoadImageWebp : MAlloc Error. size=%d", sizeof(unsigned char) * width * height * ch);
-        //WebPFree(decodedData);
-        //return -7;
-    //}
-
-    //buffer[0] = decodedData;
 
     int buffindex = -1;
     int buffpos = 0;
@@ -86,6 +77,8 @@ int LoadImageWebp(IMAGEDATA* pData, int page, int scale)
     int ret = 0;
     WORD* buffptr = NULL;
 
+    uint8_t *ddata;
+    ddata = &decodedData[0];
     //LOGI("LoadImageWebp : Height -> %d", height);
     for (int yy = 0; yy < height; yy++)
     {
@@ -117,7 +110,7 @@ int LoadImageWebp(IMAGEDATA* pData, int page, int scale)
         }
 
         buffptr = gBuffMng[buffindex].Buff + buffpos + HOKAN_DOTS / 2;
-        //		LOGD("DEBUG2:yy=%d, idx=%d, pos=%d", yy, buffindex, buffpos);
+        //LOGD("DEBUG2:yy=%d, idx=%d, pos=%d", yy, buffindex, buffpos);
 
         // データセット
         int yd3 = gDitherY_3bit[yy & 0x07];
@@ -126,11 +119,12 @@ int LoadImageWebp(IMAGEDATA* pData, int page, int scale)
 
         for (int xx = 0; xx < width; xx++) {
             //alpha はスキップ
-            rr = decodedData[(yy * width * ch) + (ch * xx)];
-            gg = decodedData[(yy * width * ch) + (ch * xx) + 1];
-            bb = decodedData[(yy * width * ch) + (ch * xx) + 2];
+            rr = *ddata; ddata++;
+            gg = *ddata; ddata++;
+            bb = *ddata; ddata++;
+            if(ch == 4) ddata++;
 
-            //LOGI("%d", yy);
+            //LOGI("RGB : rr=%d, gg=%d, bb=%d \n", rr, gg, bb);
             //LOGI("RGB : rr=%02x, gg=%02x, bb=%02x \n", (int)decodedData[(yy * width * ch) + (ch * xx)], decodedData[(yy * width * ch) + (ch * xx)], (int)decodedData[(yy * width * ch) + (ch * xx)]);
 
             // 切り捨ての値を分散
@@ -160,6 +154,7 @@ int LoadImageWebp(IMAGEDATA* pData, int page, int scale)
     pData->OrgWidth = width;
     pData->OrgHeight = height;
 
+    //メモリ解放
     WebPFree(decodedData);
     return ret;
 }
