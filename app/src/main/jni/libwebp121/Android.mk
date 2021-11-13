@@ -27,7 +27,7 @@ ifneq ($(findstring armeabi-v7a, $(TARGET_ARCH_ABI)),)
   # instructions to be generated for armv7a code. Instead target the neon code
   # specifically.
   NEON := c.neon
-  USE_CPUFEATURES := no
+  USE_CPUFEATURES := yes
   WEBP_CFLAGS += -DHAVE_CPU_FEATURES_H
 else
   NEON := c
