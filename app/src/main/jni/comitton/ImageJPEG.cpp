@@ -6,6 +6,8 @@
 #include <android/log.h>
 
 #include "Image.h"
+#include <jpeglib.h>
+#include <jerror.h>
 
 extern char			*gLoadBuffer;
 extern long			gLoadFileSize;
@@ -20,8 +22,6 @@ extern jmp_buf		gJmpBuff;
 extern "C"
 {
 //#define XMD_H
-#include "../libjpeg/jpeglib.h"
-#include "../libjpeg/jerror.h"
 }
 
 METHODDEF(void) memory_init_source (j_decompress_ptr cinfo);
@@ -68,7 +68,7 @@ jpeg_memory_src (j_decompress_ptr cinfo, void* data, unsigned long len)
 	memory_src_ptr src;
 
 	if (cinfo->src == NULL) {	/* first time for this JPEG object? */
-		cinfo->src = (struct jpeg_source_mgr *)(*cinfo->mem->alloc_small) ((j_common_ptr) cinfo, JPOOL_PERMANENT, sizeof(memory_source_mgr));
+		cinfo->src = (struct jpeg_source_mgr *)(*cinfo->mem->alloc_small) ((j_common_ptr) cinfo, JPOOL_PERMANENT, ((size_t)sizeof(memory_source_mgr)));
 		src = (memory_src_ptr) cinfo->src;
 		src->buffer = (JOCTET *)(*cinfo->mem->alloc_small) ((j_common_ptr) cinfo, JPOOL_PERMANENT, len * sizeof(JOCTET));
 	}
