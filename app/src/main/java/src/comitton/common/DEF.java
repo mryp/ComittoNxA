@@ -1623,6 +1623,8 @@ public class DEF {
 			return CHTYPE_NUM;
 		}
 
+		//Comparison method violates its general contract! 対策で常に文字列として扱う
+		/*
 		switch (ch) {
 			case '上':
 			case '中':
@@ -1668,8 +1670,11 @@ public class DEF {
 			case '阡':
 			case '万':
 			case '萬':
+			case '億':
+			case '兆':
 				return CHTYPE_JNUM;
 		}
+		*/
 		return CHTYPE_CHAR;
 	}
 
