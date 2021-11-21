@@ -5,7 +5,7 @@ def versionMinor = 65
 def versionPatch = 20
 def revision = "A"
 def versionPatch2 = 2
-def revision2 = "B"
+def revision2 = "C"
 
 android {
     compileSdkVersion 30
