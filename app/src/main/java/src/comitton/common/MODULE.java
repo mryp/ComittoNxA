@@ -13,7 +13,7 @@ public class MODULE {
 			+ "  jcifs-ng 2.1.5 (LGPL v2.1)\n"
 			+ "  unrar 5.6.4\n"
 			+ "  mupdf 1.1 (GPL v3)\n"
-			+ "  libjpg-turbo\n"
+			+ "  libjpg 9d\n"
 			+ "  libpng\n"
 			+ "  giflib\n"
 			+ "  libwebp 1.2.1\n"
