@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">ComittoNc</string>
+    <string name="app_name">ComittoNac</string>
     <string name="noticeText">history-ja.html</string>
     <string name="topMenu">カスタマイズメニュー</string>
     <string name="tguide00">画面方向切替</string>
