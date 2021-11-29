@@ -7,7 +7,7 @@
             android:summary="파일 선택 화면 시작 표시와 조작을 설정">
             <intent
                 android:targetClass="src.comitton.config.SetFileListActivity"
-                android:targetPackage="jp.dip.muracoro.comittona" />
+                android:targetPackage="io.github.yuma2a.comittonac" />
         </PreferenceScreen>
         <PreferenceScreen
             android:key="RecorderSet"
@@ -15,7 +15,7 @@
             android:summary="디렉토리/북마크/기록 목록의 표시 및 동작을 설정">
             <intent
                 android:targetClass="src.comitton.config.SetRecorderActivity"
-                android:targetPackage="jp.dip.muracoro.comittona" />
+                android:targetPackage="io.github.yuma2a.comittonac" />
         </PreferenceScreen>
         <PreferenceScreen
             android:key="FileColor"
@@ -23,7 +23,7 @@
             android:summary="파일 선택 화면의 표시 색을 설정">
             <intent
                 android:targetClass="src.comitton.config.SetFileColorActivity"
-                android:targetPackage="jp.dip.muracoro.comittona" />
+                android:targetPackage="io.github.yuma2a.comittonac" />
         </PreferenceScreen>
     </PreferenceCategory>
     <PreferenceCategory android:title="이미지 및 텍스트 디스플레이 화면" >
@@ -33,7 +33,7 @@
             android:summary="이미지 표시 화면 시작 표시와 조작을 설정">
             <intent
                 android:targetClass="src.comitton.config.SetImageActivity"
-                android:targetPackage="jp.dip.muracoro.comittona" />
+                android:targetPackage="io.github.yuma2a.comittonac" />
         </PreferenceScreen>
         <PreferenceScreen
             android:key="DetailSet"
@@ -41,7 +41,7 @@
             android:summary="이미지 표시 화면의 작동에 영향을주는 변수를 설정">
             <intent
                 android:targetClass="src.comitton.config.SetImageDetailActivity"
-                android:targetPackage="jp.dip.muracoro.comittona" />
+                android:targetPackage="io.github.yuma2a.comittonac" />
         </PreferenceScreen>
         <PreferenceScreen
             android:key="TextSet"
@@ -49,7 +49,7 @@
             android:summary="텍스트 화면의 시작 표시와 조작을 설정">
             <intent
                 android:targetClass="src.comitton.config.SetTextActivity"
-                android:targetPackage="jp.dip.muracoro.comittona" />
+                android:targetPackage="io.github.yuma2a.comittonac" />
         </PreferenceScreen>
         <PreferenceScreen
             android:key="ImageTextDetailSet"
@@ -57,7 +57,7 @@
             android:summary="이미지/텍스트 화면에서 공통 매개 변수를 설정하는">
             <intent
                 android:targetClass="src.comitton.config.SetImageTextDetailActivity"
-                android:targetPackage="jp.dip.muracoro.comittona" />
+                android:targetPackage="io.github.yuma2a.comittonac" />
         </PreferenceScreen>
         <PreferenceScreen
             android:key="ImageColor"
@@ -65,7 +65,7 @@
             android:summary="이미지/텍스트 표시 화면의 표시 색을 설정">
             <intent
                 android:targetClass="src.comitton.config.SetImageTextColorActivity"
-                android:targetPackage="jp.dip.muracoro.comittona" />
+                android:targetPackage="io.github.yuma2a.comittonac" />
         </PreferenceScreen>
     </PreferenceCategory>
     <PreferenceCategory android:title="공통" >
@@ -75,7 +75,7 @@
             android:summary="각 화면에서 공통 작업을 설정">
             <intent
                 android:targetClass="src.comitton.config.SetCommonActivity"
-                android:targetPackage="jp.dip.muracoro.comittona" />
+                android:targetPackage="io.github.yuma2a.comittonac" />
         </PreferenceScreen>
     </PreferenceCategory>
     <PreferenceCategory android:title="기타 설정" >
@@ -85,7 +85,7 @@
             android:summary="소리 작업에 대한 인식 속도와 검지 레벨 등의 파라미터를 설정하는">
             <intent
                 android:targetClass="src.comitton.config.SetNoiseActivity"
-                android:targetPackage="jp.dip.muracoro.comittona" />
+                android:targetPackage="io.github.yuma2a.comittonac" />
         </PreferenceScreen>
         <PreferenceScreen
             android:key="MemoryCache"
@@ -93,7 +93,7 @@
             android:summary="메모리 캐시의 크기와 페이지 수의 매개 변수를 설정 (재부팅 반영)">
             <intent
                 android:targetClass="src.comitton.config.SetCacheActivity"
-                android:targetPackage="jp.dip.muracoro.comittona" />
+                android:targetPackage="io.github.yuma2a.comittonac" />
         </PreferenceScreen>
     </PreferenceCategory>
     <PreferenceCategory android:title="설정 파일 저장" >

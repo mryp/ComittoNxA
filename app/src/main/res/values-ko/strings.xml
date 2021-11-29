@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">ComittoNa Continued</string>
+    <string name="app_name">ComittoNac</string>
     <string name="noticeText">history-ko.html</string>
     <string name="topMenu">사용자 정의 메뉴</string>
     <string name="tguide00">화면 방향 전환</string>
