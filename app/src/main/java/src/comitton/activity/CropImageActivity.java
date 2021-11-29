@@ -15,12 +15,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-import jp.dip.muracoro.comittona.R;
+import io.github.yuma2a.comittonac.R;
 import src.comitton.common.DEF;
 import src.comitton.stream.ImageManager;
 import src.comitton.view.image.CropImageView;
 
-import static jp.dip.muracoro.comittona.R.id.cropImageView;
+import static io.github.yuma2a.comittonac.R.id.cropImageView;
 
 public class CropImageActivity extends Activity implements Runnable, TextWatcher, CropImageView.CropCallback{
     private String mFile;

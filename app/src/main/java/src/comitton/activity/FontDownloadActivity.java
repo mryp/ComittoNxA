@@ -2,7 +2,7 @@ package src.comitton.activity;
 
 import src.comitton.dialog.FontDownloadDialog;
 
-import jp.dip.muracoro.comittona.R;
+import io.github.yuma2a.comittonac.R;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;

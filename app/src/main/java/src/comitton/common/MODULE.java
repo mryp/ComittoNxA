@@ -3,7 +3,7 @@ package src.comitton.common;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
-import jp.dip.muracoro.comittona.R;
+import io.github.yuma2a.comittonac.R;
 
 public class MODULE {
 	public static final String ABOUT_TITLE = "ComittoNxA";

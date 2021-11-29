@@ -1,6 +1,6 @@
 package src.comitton.dialog;
 
-import jp.dip.muracoro.comittona.R;
+import io.github.yuma2a.comittonac.R;
 
 import android.app.Dialog;
 import android.content.Context;

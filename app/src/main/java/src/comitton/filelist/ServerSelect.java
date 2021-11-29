@@ -3,7 +3,7 @@ package src.comitton.filelist;
 import java.io.File;
 import java.net.URLEncoder;
 
-import jp.dip.muracoro.comittona.R;
+import io.github.yuma2a.comittonac.R;
 
 import src.comitton.data.ServerData;
 import src.comitton.data.RecordItem;

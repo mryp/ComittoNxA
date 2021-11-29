@@ -17,7 +17,7 @@ import android.graphics.Paint;
 import android.graphics.Picture;
 import android.util.Log;
 
-import jp.dip.muracoro.comittona.R;
+import io.github.yuma2a.comittonac.R;
 import src.comitton.stream.CallImgLibrary;
 import src.comitton.stream.ImageData;
 import src.comitton.stream.ImageManager;

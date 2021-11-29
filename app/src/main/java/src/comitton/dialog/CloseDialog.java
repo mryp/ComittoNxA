@@ -2,7 +2,7 @@ package src.comitton.dialog;
 
 import java.util.EventListener;
 
-import jp.dip.muracoro.comittona.R;
+import io.github.yuma2a.comittonac.R;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.Dialog;

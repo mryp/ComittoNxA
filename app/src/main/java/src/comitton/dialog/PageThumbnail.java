@@ -3,7 +3,7 @@ package src.comitton.dialog;
 import src.comitton.listener.PageSelectListener;
 import src.comitton.stream.ImageManager;
 import src.comitton.view.image.ThumbnailView;
-import jp.dip.muracoro.comittona.R;
+import io.github.yuma2a.comittonac.R;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.Dialog;

@@ -13,7 +13,7 @@ import java.util.Date;
 
 import android.content.Context;
 import android.content.res.Resources;
-import jp.dip.muracoro.comittona.R;
+import io.github.yuma2a.comittonac.R;
 import src.comitton.common.DEF;
 import src.comitton.data.RecordItem;
 import src.comitton.data.ServerData;
