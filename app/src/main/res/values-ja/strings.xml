@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">ComittoNxA</string>
+    <string name="app_name">ComittoNc</string>
     <string name="noticeText">history-ja.html</string>
     <string name="topMenu">カスタマイズメニュー</string>
     <string name="tguide00">画面方向切替</string>
@@ -100,7 +100,7 @@
     <string name="searchJumpMenu">検索ヒット選択</string>
     <string name="thumbSwt">サムネイル表示</string>
     <string name="exitMenu">終了</string>
-    <string name="noticeMenu">ComittoNxAについて</string>
+    <string name="noticeMenu">ComittoNxA-Continuedについて</string>
     <string name="aboutMenu">バージョン情報</string>
     <string name="noiseMenu">音での操作</string>
     <string name="playMenu">自動再生</string>
