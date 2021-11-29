@@ -3,6 +3,12 @@
 
 ソースの再利用は自由です. 利用しているライブラリはそれぞれのライセンスに従ってください.
 
+### [Ver1.65A20C4 (2021/11/29)](https://github.com/yuma211-lab/ComittoNxA/releases/tag/1.65A20C4)
+
+- パッケージ名およびラベル名を変更
+
+### Ver1.65A20C3 (version skipped)
+
 ### [Ver1.65A20C2 (2021/11/12)](https://github.com/yuma211-lab/ComittoNxA/releases/tag/1.65A20C2)
 
 - マーク設定にて結果がすぐに表示されない不具合の修正
