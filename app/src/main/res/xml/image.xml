@@ -34,11 +34,11 @@
             android:summary="dummy"
             android:title="Strength to remove the white margin." />
         <ListPreference
-            android:defaultValue="1"
+            android:defaultValue="0"
             android:dialogTitle="Jpeg Decode Quality"
             android:entries="@array/quality_name_list"
             android:entryValues="@array/quality_value_list"
-            android:key="Quality"
+            android:key="JpgQuality"
             android:summary="dummy"
             android:title="Image Decode Quality" />
         <CheckBoxPreference

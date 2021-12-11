@@ -362,8 +362,8 @@
         <item>3</item>
     </string-array>
     <string-array name="quality_name_list">
-        <item>fast, low quality</item>
-        <item>slow, high quality</item>
+        <item>fast(low quality)</item>
+        <item>slow(high quality)</item>
     </string-array>
     <string-array name="quality_value_list">
         <item>0</item>

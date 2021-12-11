@@ -38,7 +38,7 @@
             android:dialogTitle="Jpeg展開の画質"
             android:entries="@array/quality_name_list"
             android:entryValues="@array/quality_value_list"
-            android:key="Quality"
+            android:key="JpgQuality"
             android:summary="dummy"
             android:title="Jpeg展開の画質" />
         <CheckBoxPreference
