@@ -7,7 +7,7 @@ import io.github.yuma2a.comittonac.R;
 
 public class MODULE {
 	public static final String ABOUT_TITLE = "ComittoNxA-Continued";
-	public static final String ABOUT_INFO = "\nLast Update : 2021/11/29\n  Version 1.65A20C4\n\n"
+	public static final String ABOUT_INFO = "\nLast Update : 2021/12/14\n  Version 1.65A20C5\n\n"
 			+ "Special thanks!!\n  Icon Designed by Sigeyuki Koresawa\n\n\n"
 			+ "Using Library\n"
 			+ "  jcifs-ng 2.1.5 (LGPL v2.1)\n"
