@@ -1,7 +1,9 @@
 #ifndef _RAR_ARRAY_
 #define _RAR_ARRAY_
 
-//extern ErrorHandler ErrHandler;
+#ifndef COMITTON_MOD
+extern ErrorHandler ErrHandler;
+#endif
 
 template <class T> class Array
 {
