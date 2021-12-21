@@ -124,7 +124,8 @@ void Unpack::Init(size_t WinSize,bool Solid)
 #else
       throw std::bad_alloc();
 #endif
-    } else
+    }
+    else
     {
       if (Window!=NULL) // If allocated by preceding files.
       {
