@@ -24,10 +24,9 @@ endif
 LOCAL_MODULE    := libunrar613
 
 LOCAL_SRC_FILES := unpack.cpp rdwrfn.cpp \
-                    crypt.cpp timefn.cpp strfn.cpp unicode.cpp \
-                    secpassword.cpp rijndael.cpp sha256.cpp \
-                    sha1.cpp crc.cpp hash.cpp blake2s.cpp \
-                    getbits.cpp rarvm.cpp
-
+                    blake2s.cpp crc.cpp crypt.cpp getbits.cpp hash.cpp \
+                    rarvm.cpp rijndael.cpp secpassword.cpp sha1.cpp sha256.cpp strfn.cpp timefn.cpp unicode.cpp
+#                    blake2sp.cpp coder.cpp crypt1.cpp crypt2.cpp crypt3.cpp crypt5.cpp model.cpp suballoc.cpp \
+#                    unpack15.cpp unpack20.cpp unpack30.cpp unpack50.cpp unpack50frag.cpp unpackinline.cpp
 
 include $(BUILD_STATIC_LIBRARY)
