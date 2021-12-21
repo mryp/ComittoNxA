@@ -261,8 +261,7 @@ void Unpack::ReadLastTables()
     {
       if (DecodeNumber(Inp,&MD[UnpCurChannel])==256)
         ReadTables20();
-    }
-    else
+    } else
       if (DecodeNumber(Inp,&BlockTables.LD)==269)
         ReadTables20();
 }

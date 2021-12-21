@@ -74,8 +74,13 @@ void Unpack::Init(size_t WinSize,bool Solid)
 {
   // If 32-bit RAR unpacks an archive with 4 GB dictionary, the window size
   // will be 0 because of size_t overflow. Let's issue the memory error.
-  if (WinSize==0)
+  if (WinSize==0) {
+#ifndef COMITTON_MOD
     ErrHandler.MemoryError();
+#else
+    LOGE_UNRAR("[unpack.cpp][Unpack::Init]Memory Alloc Error.");
+#endif
+  }
 
   // Minimum window size must be at least twice more than maximum possible
   // size of filter block, which is 0x10000 in RAR now. If window size is
@@ -99,8 +104,13 @@ void Unpack::Init(size_t WinSize,bool Solid)
   bool Grow=Solid && (Window!=NULL || Fragmented);
 
   // We do not handle growth for existing fragmented window.
-  if (Grow && Fragmented)
+  if (Grow && Fragmented) {
+#ifdef COMITTON_MOD
+    LOGE_UNRAR("[unpack.cpp][Unpack::Init][std::bad_alloc()]Memory Alloc Error.");
+#else
     throw std::bad_alloc();
+#endif
+  }
 
   byte *NewWindow=Fragmented ? NULL : (byte *)malloc(WinSize);
 
@@ -109,9 +119,12 @@ void Unpack::Init(size_t WinSize,bool Solid)
     {
       // We do not support growth for new fragmented window.
       // Also exclude RAR4 and small dictionaries.
+#ifdef COMITTON_MOD
+      LOGE_UNRAR("[unpack.cpp][Unpack::Init][std::bad_alloc()]Memory Alloc Error.");
+#else
       throw std::bad_alloc();
-    }
-    else
+#endif
+    } else
     {
       if (Window!=NULL) // If allocated by preceding files.
       {

@@ -329,7 +329,15 @@ void RarTime::Adjust(int64 ns)
 #ifndef SFX_MODULE
 const wchar *GetMonthName(int Month)
 {
+#ifndef COMITTON_MOD
   return uiGetMonthName(Month);
+#else
+  static MSGID MonthID[12]={
+          MMonthJan,MMonthFeb,MMonthMar,MMonthApr,MMonthMay,MMonthJun,
+          MMonthJul,MMonthAug,MMonthSep,MMonthOct,MMonthNov,MMonthDec
+  };
+  return (const wchar *)(MonthID[Month]);
+#endif
 }
 #endif
 

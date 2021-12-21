@@ -1,7 +1,7 @@
 #ifndef _RAR_ARRAY_
 #define _RAR_ARRAY_
 
-extern ErrorHandler ErrHandler;
+//extern ErrorHandler ErrHandler;
 
 template <class T> class Array
 {
@@ -104,8 +104,12 @@ template <class T> void Array<T>::Add(size_t Items)
   {
     if (MaxSize!=0 && BufSize>MaxSize)
     {
+#ifndef COMITTON_MOD
       ErrHandler.GeneralErrMsg(L"Maximum allowed array size (%u) is exceeded",MaxSize);
       ErrHandler.MemoryError();
+#else
+      LOGE_UNRAR("Maximum allowed array size (%u) is exceeded",MaxSize);
+#endif
     }
 
     size_t Suggested=AllocSize+AllocSize/4+32;
@@ -115,8 +119,13 @@ template <class T> void Array<T>::Add(size_t Items)
     if (Secure)
     {
       NewBuffer=(T *)malloc(NewSize*sizeof(T));
-      if (NewBuffer==NULL)
+      if (NewBuffer==NULL) {
+#ifndef COMITTON_MOD
         ErrHandler.MemoryError();
+#else
+        LOGE_UNRAR("[array.hpp][Add]Memory Alloc Error.");
+#endif
+      }
       if (Buffer!=NULL)
       {
         memcpy(NewBuffer,Buffer,AllocSize*sizeof(T));
@@ -127,8 +136,13 @@ template <class T> void Array<T>::Add(size_t Items)
     else
     {
       NewBuffer=(T *)realloc(Buffer,NewSize*sizeof(T));
-      if (NewBuffer==NULL)
+      if (NewBuffer==NULL) {
+#ifndef COMITTON_MOD
         ErrHandler.MemoryError();
+#else
+        LOGE_UNRAR("[array.hpp][Add]Memory Alloc Error.");
+#endif
+      }
     }
     Buffer=NewBuffer;
     AllocSize=NewSize;

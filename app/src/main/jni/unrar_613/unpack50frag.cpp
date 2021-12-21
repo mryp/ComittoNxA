@@ -46,8 +46,13 @@ void FragmentedWindow::Init(size_t WinSize)
         break;
       Size-=Size/32;
     }
-    if (NewMem==NULL)
+    if (NewMem==NULL) {
+#ifdef COMITTON_MOD
+      LOGE_UNRAR("[unpack50frag.cpp][FragmentedWindow::Init][std::bad_alloc()]Memory Alloc Error.");
+#else
       throw std::bad_alloc();
+#endif
+    }
 
     // Clean the window to generate the same output when unpacking corrupt
     // RAR files, which may access to unused areas of sliding dictionary.
@@ -58,8 +63,13 @@ void FragmentedWindow::Init(size_t WinSize)
     MemSize[BlockNum]=TotalSize;
     BlockNum++;
   }
-  if (TotalSize<WinSize) // Not found enough free blocks.
+  if (TotalSize<WinSize) { // Not found enough free blocks.
+#ifdef COMITTON_MOD
+    LOGE_UNRAR("[unpack50frag.cpp][FragmentedWindow::Init][std::bad_alloc()]Memory Alloc Error.");
+#else
     throw std::bad_alloc();
+#endif
+  }
 }
 
 

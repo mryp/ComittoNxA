@@ -297,8 +297,7 @@ void Unpack::LongLZ()
     {
       AvrLn3++;
       AvrLn3 -= AvrLn3 >> 8;
-    }
-    else
+    } else
       if (AvrLn3 > 0)
         AvrLn3--;
   Length+=3;

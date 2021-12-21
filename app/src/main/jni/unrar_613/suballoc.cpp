@@ -90,7 +90,11 @@ bool SubAllocator::StartSubAllocator(int SASize)
   uint AllocSize=t/FIXED_UNIT_SIZE*UNIT_SIZE+2*UNIT_SIZE;
   if ((HeapStart=(byte *)malloc(AllocSize)) == NULL)
   {
+#ifndef COMITTON_MOD
     ErrHandler.MemoryError();
+#else
+    LOGE_UNRAR("[suballoc.cpp][SubAllocator::StartSubAllocator][std::bad_alloc()]Memory Alloc Error.");
+#endif
     return false;
   }
 

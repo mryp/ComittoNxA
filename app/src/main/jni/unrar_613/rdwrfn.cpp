@@ -24,8 +24,10 @@ void ComprDataIO::Init()
   PackVolume=false;
   UnpVolume=false;
   NextVolumeMissing=false;
+#ifndef COMITTON_MOD
   SrcFile=NULL;
   DestFile=NULL;
+#endif
   UnpWrAddr=NULL;
   UnpWrSize=0;
   Command=NULL;
@@ -68,6 +70,15 @@ int ComprDataIO::UnpRead(byte *Addr,size_t Count)
   ReadAddr=Addr;
   while (Count > 0)
   {
+#ifdef COMITTON_MOD
+    // comittoでは必ずメモリからの解凍を行っている
+    // 本家と違って指定されたCount分しか解凍しない
+    size_t SizeToRead = ((int64)Count > UnpPackedSize) ? (size_t)UnpPackedSize : Count;
+    memcpy( Addr, UnpackFromMemoryAddr, SizeToRead );
+    ReadSize = (int)SizeToRead;
+    UnpackFromMemorySize -= SizeToRead;
+    UnpackFromMemoryAddr += SizeToRead;
+#else
     Archive *SrcArc=(Archive *)SrcFile;
 
     if (UnpackFromMemory)
@@ -104,6 +115,7 @@ int ComprDataIO::UnpRead(byte *Addr,size_t Count)
           PackedDataHash.Update(ReadAddr,ReadSize);
       }
     }
+#endif
     CurUnpRead+=ReadSize;
     TotalRead+=ReadSize;
 #ifndef NOVOLUME
@@ -114,6 +126,7 @@ int ComprDataIO::UnpRead(byte *Addr,size_t Count)
 #endif
     UnpPackedLeft-=ReadSize;
 
+#ifndef COMITTON_MOD
     // Do not ask for next volume if we read something from current volume.
     // If next volume is missing, we need to process all data from current
     // volume before aborting. It helps to recover all possible data
@@ -134,10 +147,16 @@ int ComprDataIO::UnpRead(byte *Addr,size_t Count)
     }
     else
       break;
+#else
+    // 指定されたCount分の処理が終われば抜ける
+    break;
+#endif
   }
+#ifndef COMITTON_MOD
   Archive *SrcArc=(Archive *)SrcFile;
   if (SrcArc!=NULL)
     ShowUnpRead(SrcArc->NextBlockPos-UnpPackedSize+CurUnpRead,TotalArcSize);
+#endif
   if (ReadSize!=-1)
   {
     ReadSize=TotalRead;
@@ -146,7 +165,9 @@ int ComprDataIO::UnpRead(byte *Addr,size_t Count)
       Decrypt->DecryptBlock(Addr,ReadSize);
 #endif
   }
+#ifndef COMITTON_MOD
   Wait();
+#endif
   return ReadSize;
 }
 
@@ -172,23 +193,29 @@ void ComprDataIO::UnpWrite(byte *Addr,size_t Count)
 
   UnpWrAddr=Addr;
   UnpWrSize=Count;
+#ifndef COMITTON_MOD
   if (UnpackToMemory)
   {
+#endif
     if (Count <= UnpackToMemorySize)
     {
       memcpy(UnpackToMemoryAddr,Addr,Count);
       UnpackToMemoryAddr+=Count;
       UnpackToMemorySize-=Count;
     }
+#ifndef COMITTON_MOD
   }
   else
     if (!TestMode)
       DestFile->Write(Addr,Count);
+#endif
   CurUnpWrite+=Count;
   if (!SkipUnpCRC)
-    UnpHash.Update(Addr,Count);
+    UnpHash.Update(Addr,Count); // TODO: 以前はCRCを求めていた部分。内部処理を未検証のため、改変後に正しく動作しているか不明
+#ifndef COMITTON_MOD
   ShowUnpWrite();
   Wait();
+#endif
 }
 
 
@@ -196,6 +223,7 @@ void ComprDataIO::UnpWrite(byte *Addr,size_t Count)
 
 
 
+#ifndef COMITTON_MOD
 void ComprDataIO::ShowUnpRead(int64 ArcPos,int64 ArcSize)
 {
   if (ShowProgress && SrcFile!=NULL)
@@ -237,6 +265,7 @@ void ComprDataIO::SetFiles(File *SrcFile,File *DestFile)
     ComprDataIO::DestFile=DestFile;
   LastPercent=-1;
 }
+#endif
 
 
 void ComprDataIO::GetUnpackedData(byte **Data,size_t *Size)
@@ -287,6 +316,7 @@ void ComprDataIO::SetUnpackToMemory(byte *Addr,uint Size)
 }
 
 
+#ifndef COMITTON_MOD
 // Extraction progress is based on the position in archive and we adjust 
 // the total archives size here, so trailing blocks do not prevent progress
 // reaching 100% at the end of extraction. Alternatively we could print "100%"
@@ -320,3 +350,13 @@ void ComprDataIO::AdjustTotalArcSize(Archive *Arc)
 
   TotalArcSize-=ArcLength-LastArcSize;
 }
+#endif
+
+#ifdef COMITTON_MOD
+  void ComprDataIO::SetUnpackFromMemory(byte *Addr,uint Size)
+  {
+    UnpackFromMemory=true;
+    UnpackFromMemoryAddr=Addr;
+    UnpackFromMemorySize=Size;
+  }
+#endif

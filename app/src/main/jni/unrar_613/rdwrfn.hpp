@@ -14,8 +14,10 @@ class ArcFileSearch;
 class ComprDataIO
 {
   private:
+#ifndef COMITTON_MOD
     void ShowUnpRead(int64 ArcPos,int64 ArcSize);
     void ShowUnpWrite();
+#endif
 
 
     bool UnpackFromMemory;
@@ -37,8 +39,10 @@ class ComprDataIO
     bool SkipUnpCRC;
     bool NoFileHeader;
 
+#ifndef COMITTON_MOD
     File *SrcFile;
     File *DestFile;
+#endif
 
     CmdAdd *Command;
 
@@ -67,13 +71,19 @@ class ComprDataIO
     void SetTestMode(bool Mode) {TestMode=Mode;}
     void SetSkipUnpCRC(bool Skip) {SkipUnpCRC=Skip;}
     void SetNoFileHeader(bool Mode) {NoFileHeader=Mode;}
+#ifndef COMITTON_MOD
     void SetFiles(File *SrcFile,File *DestFile);
+#endif
     void SetCommand(CmdAdd *Cmd) {Command=Cmd;}
     void SetSubHeader(FileHeader *hd,int64 *Pos) {SubHead=hd;SubHeadPos=Pos;}
     void SetEncryption(bool Encrypt,CRYPT_METHOD Method,SecPassword *Password,
          const byte *Salt,const byte *InitV,uint Lg2Cnt,byte *HashKey,byte *PswCheck);
     void SetAV15Encryption();
     void SetCmt13Encryption();
+
+#ifdef COMITTON_MOD
+    void SetUnpackFromMemory(byte *Addr,uint Size);
+#endif
     void SetUnpackToMemory(byte *Addr,uint Size);
     void SetCurrentCommand(wchar Cmd) {CurrentCommand=Cmd;}
     void AdjustTotalArcSize(Archive *Arc);

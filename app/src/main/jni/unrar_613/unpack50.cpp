@@ -127,9 +127,9 @@ void Unpack::Unpack5(bool Solid)
     if (MainSlot==257)
     {
       if (LastLength!=0)
-        if (Fragmented)
-          FragWindow.CopyString(LastLength,OldDist[0],UnpPtr,MaxWinMask);
-        else
+        if (Fragmented) {
+          FragWindow.CopyString(LastLength, OldDist[0], UnpPtr, MaxWinMask);
+        } else
           CopyString(LastLength,OldDist[0]);
       continue;
     }

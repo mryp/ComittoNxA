@@ -11,7 +11,7 @@ public class MODULE {
 			+ "Special thanks!!\n  Icon Designed by Sigeyuki Koresawa\n\n\n"
 			+ "Using Library\n"
 			+ "  jcifs-ng 2.1.5 (LGPL v2.1)\n"
-			+ "  unrar 5.6.4\n"
+			+ "  unrar 6.1.3\n"
 			+ "  mupdf 1.1 (GPL v3)\n"
 			+ "  libjpg-turbo\n"
 			+ "  libpng\n"
