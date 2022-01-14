@@ -13,7 +13,7 @@ import android.widget.SeekBar;
 import android.widget.Spinner;
 import android.widget.TextView;
 
-import jp.dip.muracoro.comittona.R;
+import io.github.yuma2a.comittonac.R;
 import src.comitton.common.DEF;
 
 public class TimeAndBatteryPreference extends DialogPreference implements SeekBar.OnSeekBarChangeListener {

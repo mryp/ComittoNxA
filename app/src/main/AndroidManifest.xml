@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="jp.dip.muracoro.comittona"
+    package="io.github.yuma2a.comittonac"
     android:installLocation="preferExternal">
 
     <!--     android:theme="@android:style/Theme.NoTitleBar.Fullscreen" -->
     <application
         android:icon="@drawable/icon"
-        android:label="@string/app_name"
+        android:label="ComittoNxA-Continued"
         android:largeHeap="true"
         android:hardwareAccelerated="false"
         android:requestLegacyExternalStorage="true">
@@ -18,7 +18,7 @@
             android:configChanges="keyboardHidden|orientation|keyboard|screenSize"
             android:label="@string/app_name"
             android:maxAspectRatio="3.0"
-            android:name=".FileSelectActivity"
+            android:name="jp.dip.muracoro.comittona.FileSelectActivity"
             android:theme="@style/NoAnime">
             <intent-filter >
                 <action android:name="android.intent.action.MAIN" />
@@ -29,7 +29,7 @@
             android:configChanges="keyboardHidden|orientation|keyboard|screenSize"
             android:label="@string/app_name"
             android:maxAspectRatio="3.0"
-            android:name=".ImageActivity"
+            android:name="jp.dip.muracoro.comittona.ImageActivity"
             android:theme="@style/MyTheme"
             android:hardwareAccelerated="false">
             <intent-filter android:label="@string/app_name" >
@@ -53,7 +53,7 @@
             android:configChanges="keyboardHidden|orientation|keyboard|screenSize"
             android:label="@string/app_name"
             android:maxAspectRatio="3.0"
-            android:name=".TextActivity"
+            android:name="jp.dip.muracoro.comittona.TextActivity"
             android:theme="@style/MyTheme" >
             <intent-filter android:label="@string/app_name" >
                 <action android:name="android.intent.action.SEND" />

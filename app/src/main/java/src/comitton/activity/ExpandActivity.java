@@ -7,7 +7,7 @@ import java.util.Collections;
 import java.util.Comparator;
 
 import jp.dip.muracoro.comittona.ImageActivity;
-import jp.dip.muracoro.comittona.R;
+import io.github.yuma2a.comittonac.R;
 import jp.dip.muracoro.comittona.TextActivity;
 
 import src.comitton.common.DEF;

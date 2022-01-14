@@ -2,7 +2,7 @@ package src.comitton.view.list;
 
 import java.util.ArrayList;
 
-import jp.dip.muracoro.comittona.R;
+import io.github.yuma2a.comittonac.R;
 import src.comitton.common.DEF;
 import src.comitton.common.ImageAccess;
 import src.comitton.common.TextFormatter;

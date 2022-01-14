@@ -3,15 +3,15 @@ package src.comitton.common;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
-import jp.dip.muracoro.comittona.R;
+import io.github.yuma2a.comittonac.R;
 
 public class MODULE {
-	public static final String ABOUT_TITLE = "ComittoNxA";
-	public static final String ABOUT_INFO = "\nLast Update : 2021/11/11\n  Version 1.65A20C2\n\n"
+	public static final String ABOUT_TITLE = "ComittoNxA-Continued";
+	public static final String ABOUT_INFO = "\nLast Update : 2021/12/14\n  Version 1.65A20C5\n\n"
 			+ "Special thanks!!\n  Icon Designed by Sigeyuki Koresawa\n\n\n"
 			+ "Using Library\n"
 			+ "  jcifs-ng 2.1.5 (LGPL v2.1)\n"
-			+ "  unrar 5.6.4\n"
+			+ "  unrar 6.1.3\n"
 			+ "  mupdf 1.1 (GPL v3)\n"
 			+ "  libjpg 9d\n"
 			+ "  libpng\n"

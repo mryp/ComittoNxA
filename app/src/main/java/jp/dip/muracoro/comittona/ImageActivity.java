@@ -3,6 +3,8 @@ package jp.dip.muracoro.comittona;
 import java.util.ArrayList;
 import java.util.Date;
 
+import io.github.yuma2a.comittonac.R;
+
 import src.comitton.common.DEF;
 import src.comitton.common.FileAccess;
 import src.comitton.config.SetCacheActivity;

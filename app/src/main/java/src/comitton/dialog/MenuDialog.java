@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.EventListener;
 import java.util.List;
 
-import jp.dip.muracoro.comittona.R;
+import io.github.yuma2a.comittonac.R;
 import src.comitton.view.MenuItemView;
 
 

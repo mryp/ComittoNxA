@@ -359,7 +359,7 @@ public class DEF {
 	public static final String KEY_SAVEPAGE = "SavePage";
 	public static final String KEY_PREVREV = "PrevRev";
 	public static final String KEY_INITVIEW = "InitView";
-	public static final String KEY_QUALITY = "Quality";
+	public static final String KEY_QUALITY = "JpgQuality";
 	public static final String KEY_PAGEWAY = "PageWay";
 	public static final String KEY_FITDUAL = "FitDual";
 	public static final String KEY_CMARGIN = "CMargin";

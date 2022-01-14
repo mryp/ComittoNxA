@@ -10,7 +10,7 @@ import java.net.URL;
 
 import src.comitton.common.DEF;
 
-import jp.dip.muracoro.comittona.R;
+import io.github.yuma2a.comittonac.R;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;

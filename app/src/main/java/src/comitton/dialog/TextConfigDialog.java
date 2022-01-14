@@ -5,7 +5,7 @@ import java.util.EventListener;
 import src.comitton.common.DEF;
 import src.comitton.config.SetTextActivity;
 import src.comitton.dialog.ListDialog.ListSelectListener;
-import jp.dip.muracoro.comittona.R;
+import io.github.yuma2a.comittonac.R;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.Dialog;

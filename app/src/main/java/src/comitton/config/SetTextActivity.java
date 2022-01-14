@@ -5,7 +5,7 @@ import java.io.File;
 import src.comitton.activity.FontDownloadActivity;
 import src.comitton.common.DEF;
 
-import jp.dip.muracoro.comittona.R;
+import io.github.yuma2a.comittonac.R;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.OnSharedPreferenceChangeListener;

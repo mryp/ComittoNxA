@@ -8,7 +8,7 @@ import src.comitton.common.DEF;
 import src.comitton.common.FileAccess;
 
 import jcifs.smb.SmbRandomAccessFile;
-import jp.dip.muracoro.comittona.R;
+import io.github.yuma2a.comittonac.R;
 import src.comitton.data.FileData;
 import src.comitton.stream.WorkStream;
 

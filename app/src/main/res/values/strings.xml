@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">ComittoNxA</string>
+    <string name="app_name">ComittoNac</string>
     <string name="noticeText">history.html</string>
     <string name="topMenu">Customized Menu</string>
     <string name="tguide00">Screen direction</string>

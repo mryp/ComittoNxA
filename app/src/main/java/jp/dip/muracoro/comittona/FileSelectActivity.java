@@ -13,6 +13,8 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Map;
 
+import io.github.yuma2a.comittonac.R;
+
 import src.comitton.activity.ExpandActivity;
 import src.comitton.activity.ServerActivity;
 import src.comitton.common.DEF;
@@ -47,7 +49,6 @@ import src.comitton.view.list.ListScreenView;
 import src.comitton.view.list.RecordListArea;
 import src.comitton.view.list.TitleArea;
 import jcifs.smb.SmbFile;
-//import jp.dip.muracoro.comittona.R;
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.app.Activity;

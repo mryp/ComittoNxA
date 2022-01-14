@@ -6,7 +6,7 @@ import java.util.EventListener;
 import jp.dip.muracoro.comittona.FileSelectActivity;
 import src.comitton.common.FileAccess;
 
-import jp.dip.muracoro.comittona.R;
+import io.github.yuma2a.comittonac.R;
 import src.comitton.data.FileData;
 
 import android.app.Dialog;

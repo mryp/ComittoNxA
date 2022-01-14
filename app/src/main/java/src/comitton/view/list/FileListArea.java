@@ -10,7 +10,7 @@ import src.comitton.filelist.RecordList;
 import src.comitton.listener.DrawNoticeListener;
 import src.comitton.stream.CallImgLibrary;
 
-import jp.dip.muracoro.comittona.R;
+import io.github.yuma2a.comittonac.R;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.res.Resources;

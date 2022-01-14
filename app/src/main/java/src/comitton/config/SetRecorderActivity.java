@@ -2,7 +2,7 @@ package src.comitton.config;
 
 import src.comitton.common.DEF;
 import src.comitton.filelist.RecordList;
-import jp.dip.muracoro.comittona.R;
+import io.github.yuma2a.comittonac.R;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.OnSharedPreferenceChangeListener;

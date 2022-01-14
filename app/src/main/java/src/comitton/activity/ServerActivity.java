@@ -3,7 +3,7 @@ package src.comitton.activity;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 
-import jp.dip.muracoro.comittona.R;
+import io.github.yuma2a.comittonac.R;
 
 import src.comitton.common.DEF;
 import src.comitton.config.SetFileColorActivity;
